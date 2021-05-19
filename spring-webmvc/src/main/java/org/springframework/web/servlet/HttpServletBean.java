@@ -52,11 +52,10 @@ import org.springframework.web.context.support.StandardServletEnvironment;
  * its config parameters ({@code init-param} entries within the
  * {@code servlet} tag in {@code web.xml}) as bean properties.
  *
- * <p>A handy superclass for any type of servlet. Type conversion of config
- * parameters is automatic, with the corresponding setter method getting
- * invoked with the converted value. It is also possible for subclasses to
- * specify required properties. Parameters without matching bean property
- * setter will simply be ignored.
+ * <p>
+ *     一个方便的超类，适用于任何类型的servlet。
+ * config 参数的类型转换是自动进行的，相应的setter方法将使用转换后的值被调用。
+ * 子类也可以指定所需的属性。没有匹配bean属性* setter的参数将被简单地忽略。
  *
  * <p>This servlet leaves request handling to subclasses, inheriting the default
  * behavior of HttpServlet ({@code doGet}, {@code doPost}, etc).
@@ -92,12 +91,8 @@ public abstract class HttpServletBean extends HttpServlet implements Environment
 
 
 	/**
-	 * Subclasses can invoke this method to specify that this property
-	 * (which must match a JavaBean property they expose) is mandatory,
-	 * and must be supplied as a config parameter. This should be called
-	 * from the constructor of a subclass.
-	 * <p>This method is only relevant in case of traditional initialization
-	 * driven by a ServletConfig instance.
+	 * 子类可以调用此方法来指定此属性(必须与它们公开的JavaBean属性匹配)是强制的，
+	 * 必须作为配置参数提供。这应该从子类的构造函数调用。这个方法只适用于由ServletConfig实例驱动的传统初始化。
 	 * @param property name of the required property
 	 */
 	protected final void addRequiredProperty(String property) {
@@ -140,10 +135,8 @@ public abstract class HttpServletBean extends HttpServlet implements Environment
 	}
 
 	/**
-	 * Map config parameters onto bean properties of this servlet, and
-	 * invoke subclass initialization.
-	 * @throws ServletException if bean properties are invalid (or required
-	 * properties are missing), or if subclass initialization fails.
+	 * 将配置参数映射到这个servlet的bean属性上，并且调用子类初始化。
+	 * @throws ServletException 如果bean属性无效(或必需的属性缺失)，或者子类初始化失败。
 	 */
 	@Override
 	public final void init() throws ServletException {
